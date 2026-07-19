@@ -1818,7 +1818,9 @@
                       <div class="visitor-summary__card"><span>Today</span><strong>{{ visitorStats.visitsToday | number }}</strong></div>
                     </div>
                     <div class="visitor-map-preview">
-                      <app-visitor-map [locations]="visitorStats.locations" [compact]="true"></app-visitor-map>
+                      <a routerLink="/visitors" class="visitor-map-preview__map-link" aria-label="Open detailed visitor map">
+                        <app-visitor-map [locations]="visitorStats.locations" [compact]="true"></app-visitor-map>
+                      </a>
                       <a routerLink="/visitors" class="visitor-map-preview__button">Explore Visitor Map →</a>
                     </div>
                   </ng-container>

@@ -14,6 +14,7 @@ export class VisitorMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   private map: L.Map;
   private markerLayer: L.LayerGroup;
+  private hasFittedLocations = false;
 
   ngAfterViewInit(): void {
     this.map = L.map(this.mapContainer.nativeElement, {
@@ -72,6 +73,18 @@ export class VisitorMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       });
       marker.addTo(this.markerLayer);
     });
+
+    this.fitDetailedMapOnce();
+  }
+
+  private fitDetailedMapOnce(): void {
+    if (this.compact || this.hasFittedLocations || !this.locations || !this.locations.length) return;
+    const coordinates = this.locations
+      .map(location => [Number(location.latitude), Number(location.longitude)] as [number, number])
+      .filter(point => isFinite(point[0]) && isFinite(point[1]));
+    if (!coordinates.length) return;
+    this.hasFittedLocations = true;
+    this.map.fitBounds(L.latLngBounds(coordinates), {padding: [55, 55], maxZoom: 5});
   }
 
   private clusterLocations(): any[] {
