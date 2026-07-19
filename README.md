@@ -1,17 +1,37 @@
-# My Technical Skills
+# My Website!
 
-<div align="center">
+Welcome to the code for my [personal website](https://sohaibcs1.github.io/web/)
 
-| 🚀 **Category**           | 🧠 **Skills** |
-|--------------------------|---------------|
-| **Programming Languages** | Python, C++, R, JavaScript, Java, PHP, Node.js, Vue.js, XML, JSON, HTML, CSS |
-| **Frameworks & Tools**     | PyTorch, TensorFlow, Vertex AI, Transformers, Scikit-learn, MLFlow, Flask, Django, Quasar, WebSockets, Jupyter Notebooks, MATLAB, Bioformats, VTK (Kitware) |
-| **Libraries**             | Pandas, NumPy, Hugging Face (🤗 Transformers), RAG |
-| **Technologies**          | Docker, Git, CUDA, Google Cloud Platform (GCP) |
-| **Databases**             | PostgreSQL, SQL, NoSQL, Firebase Realtime Database |
+Feel free to explore, copy, or reach out with questions on how to create a similar site. There are many other resources and templates available for personal websites, such as [Academic Pages](https://academicpages.github.io/)..
 
-</div>
+I built this site using Angular and hosted it on GitHub Pages. The deployment process is simple—just run `ng deploy` with the help of the [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) tool.
 
----
+## Key Features
+- **Angular Framework**: A powerful, versatile framework for building single-page applications.
+- **GitHub Pages**: Free hosting directly from your GitHub repository.
+- **Easy Deployment**: Streamlined deployment process using `ng deploy`.
+- **Easy Run**: Streamlined deployment process using `ng s`.
+## Getting Started
 
-> ✨ *I'm passionate about developing intelligent systems, AI and machine learning frameworks, and contributing to impactful open-source research projects.*
+### Prerequisites
+- Node.js and npm installed
+- Angular CLI installed globally (`npm install -g @angular/cli`)
+- `npm i --force`
+- `export NODE_OPTIONS=--openssl-legacy-provider` 
+- Run locally with `ng s` and open `http://localhost:4200`
+- Build for GitHub Pages with `npm run build:github`
+- Deploy to GitHub Pages with `npm run deploy:github`
+
+The source file keeps `<base href="/">` for local development. The production
+configuration in `angular.json` automatically changes it to `/web/`, so no
+manual editing or commenting is required.
+
+
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sohaibcs1/web
+
+
+https://clustrmaps.com/
