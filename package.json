@@ -4,8 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev": "concurrently -k -n WEB,API -c blue,green \"npm start\" \"npm run worker:dev\"",
     "build": "ng build",
-    "build:github": "ng build --prod",
+    "build:github": "ng build --prod --base-href=/",
+    "build:pages": "npm run build:github && cp docs/index.html docs/404.html",
+    "worker:dev": "wrangler dev --config visitor-api/wrangler.toml",
+    "worker:deploy": "wrangler deploy --config visitor-api/wrangler.toml",
+    "worker:db:init": "wrangler d1 execute sohaib-portfolio-visitors --local --file=visitor-api/schema.sql --config visitor-api/wrangler.toml",
     "deploy:github": "ng deploy --base-href=/web/",
     "test": "ng test",
     "lint": "ng lint",
@@ -61,6 +66,7 @@
     "@types/node": "^12.11.1",
     "angular-cli-ghpages": "^1.0.0",
     "codelyzer": "^6.0.0",
+    "concurrently": "^9.2.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -72,6 +78,7 @@
     "schematics-scss-migrate": "^1.1.7",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "wrangler": "^3.114.15"
   }
 }

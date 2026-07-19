@@ -79,7 +79,11 @@ export class MainPageComponent implements OnInit, OnDestroy {
       }, () => {
         this.http.get<any>(`${environment.visitorApiUrl}/visitors`).subscribe(stats => {
           this.visitorStats = stats;
-        }, () => this.visitorStats = null, () => this.visitorLoading = false);
+          this.visitorLoading = false;
+        }, () => {
+          this.visitorStats = null;
+          this.visitorLoading = false;
+        });
       });
   }
 

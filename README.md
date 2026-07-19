@@ -1,37 +1,67 @@
-# My Website!
+# Muhammad Sohaib — Portfolio
 
-Welcome to the code for my [personal website](https://sohaibcs1.github.io/web/)
+Source code for [sohaibcs1.github.io](https://sohaibcs1.github.io/). The project contains an Angular portfolio and a Cloudflare Worker/D1 visitor API.
 
-Feel free to explore, copy, or reach out with questions on how to create a similar site. There are many other resources and templates available for personal websites, such as [Academic Pages](https://academicpages.github.io/)..
+## Quick start
 
-I built this site using Angular and hosted it on GitHub Pages. The deployment process is simple—just run `ng deploy` with the help of the [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) tool.
+Requirements: Node.js and npm.
 
-## Key Features
-- **Angular Framework**: A powerful, versatile framework for building single-page applications.
-- **GitHub Pages**: Free hosting directly from your GitHub repository.
-- **Easy Deployment**: Streamlined deployment process using `ng deploy`.
-- **Easy Run**: Streamlined deployment process using `ng s`.
-## Getting Started
+```bash
+git clone https://github.com/sohaibcs1/portfolio.git
+cd portfolio
+npm install --legacy-peer-deps
+npm start
+```
 
-### Prerequisites
-- Node.js and npm installed
-- Angular CLI installed globally (`npm install -g @angular/cli`)
-- `npm i --force`
-- `export NODE_OPTIONS=--openssl-legacy-provider` 
-- Run locally with `ng s` and open `http://localhost:4200`
-- Build for GitHub Pages with `npm run build:github`
-- Deploy to GitHub Pages with `npm run deploy:github`
+Open [http://localhost:4200](http://localhost:4200). The portfolio uses the deployed visitor API, so the map works without running Cloudflare locally.
 
-The source file keeps `<base href="/">` for local development. The production
-configuration in `angular.json` automatically changes it to `/web/`, so no
-manual editing or commenting is required.
+Only one root `node_modules` directory is used. Do not run `npm install` inside `visitor-api`.
 
+## Common commands
 
+```bash
+npm start              # Angular site only
+npm run dev            # Angular site and local Worker tools
+npm run build:pages    # Production build in docs/ with SPA fallback
+npm test               # Angular tests
+npm run worker:dev     # Local Worker only
+npm run worker:deploy  # Deploy Worker to Cloudflare
+```
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sohaibcs1/web
+## Project structure
 
+```text
+src/                 Angular application source
+visitor-api/src/     Cloudflare Worker source
+visitor-api/schema.sql
+visitor-api/wrangler.toml
+docs/                Generated GitHub Pages build (not source)
+```
 
-https://clustrmaps.com/
+## Visitor privacy
+
+Cloudflare estimates country, region, city, latitude, and longitude from network information. Locations are approximate. The Worker never stores or publicly displays raw IP addresses; it stores a daily salted one-way hash for visit counting.
+
+Before the first Worker deployment, configure the hash salt:
+
+```bash
+npx wrangler secret put HASH_SALT --config visitor-api/wrangler.toml
+```
+
+The D1 database binding is defined in `visitor-api/wrangler.toml`. Local D1 data and Wrangler temporary files are ignored by Git.
+
+## Deployment
+
+Build the site:
+
+```bash
+npm run build:pages
+```
+
+The deployable files are generated in `docs/`. The live Worker can be updated with:
+
+```bash
+npm run worker:deploy
+```
+
+Never commit `node_modules`, `.wrangler`, secrets, or local database files.

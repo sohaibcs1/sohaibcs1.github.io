@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.wrangler": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.wrangler": true,
+    "docs": true
+  }
+}
