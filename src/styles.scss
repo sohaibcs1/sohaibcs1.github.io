@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Prevent portfolio image rules from resizing or displacing Leaflet map tiles. */
+.leaflet-container { position: relative; overflow: hidden; isolation: isolate; }
+.leaflet-container .leaflet-pane,
+.leaflet-container .leaflet-map-pane,
+.leaflet-container .leaflet-tile-pane,
+.leaflet-container .leaflet-tile-container,
+.leaflet-container .leaflet-tile { position: absolute; left: 0; top: 0; }
+.leaflet-container img.leaflet-tile {
+  width: 256px !important;
+  height: 256px !important;
+  max-width: none !important;
+  max-height: none !important;
+  padding: 0 !important;
+  object-fit: fill !important;
+}
+
+.activities-section p,
+.activities-section p *,
+#activities ~ div p,
+#activities ~ div p * { font-size: 14px !important; line-height: 20px !important; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }

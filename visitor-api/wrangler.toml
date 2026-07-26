@@ -1,0 +1,9 @@
+name = "sohaib-portfolio-visitors"
+main = "src/index.js"
+compatibility_date = "2026-07-19"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sohaib-portfolio-visitors"
+database_id = "fbba69ab-4b8a-48e3-a9b8-ac5844454905"
+

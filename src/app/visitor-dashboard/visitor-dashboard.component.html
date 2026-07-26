@@ -1,0 +1,30 @@
+<main class="visitor-dashboard">
+  <a routerLink="/" class="back-link">← Back to portfolio</a>
+  <header class="dashboard-header">
+    <div><span>Global audience</span><h1>Visitor Map</h1><p>Real visits shown with privacy-safe, approximate locations.</p></div>
+    <label>Time period
+      <select [(ngModel)]="days" (change)="changeRange()"><option [ngValue]="1">Today</option><option [ngValue]="7">7 days</option><option [ngValue]="30">30 days</option><option [ngValue]="3650">All time</option></select>
+    </label>
+  </header>
+
+  <section class="dashboard-summary">
+    <div><span>Total visits</span><strong>{{ summary.totalVisits | number }}</strong></div>
+    <div><span>Countries</span><strong>{{ summary.countries | number }}</strong></div>
+    <div><span>Today</span><strong>{{ summary.visitsToday | number }}</strong></div>
+  </section>
+
+  <section class="map-card"><app-visitor-map [locations]="locations" (locationSelected)="selectLocation($event)"></app-visitor-map></section>
+
+  <section class="activity-card">
+    <div class="activity-heading"><div><span>Visitor activity</span><h2>Recent visits</h2></div><button *ngIf="selectedLocation" (click)="clearLocation()">Clear {{ selectedLocation.city || selectedLocation.country }} filter ×</button></div>
+    <div class="loading" *ngIf="loading">Loading visitor activity…</div>
+    <div class="visit-row" *ngFor="let visit of visits">
+      <span class="flag">{{ countryFlag(visit.countryCode) }}</span>
+      <div><strong>{{ visit.city || 'Unknown city' }}</strong><span>{{ visit.country }}</span></div>
+      <span>{{ visit.pageviews }} {{ visit.pageviews === 1 ? 'page' : 'pages' }}</span>
+      <time>{{ visit.visitedAt | date:'MMM d, y, h:mm a' }}</time>
+    </div>
+    <div class="pagination" *ngIf="!loading"><button (click)="previousPage()" [disabled]="page === 1">Previous</button><span>Page {{ page }} of {{ totalPages }}</span><button (click)="nextPage()" [disabled]="page === totalPages">Next</button></div>
+  </section>
+  <p class="privacy-note">Locations are approximate. IP addresses and persistent identifiers are never displayed.</p>
+</main>

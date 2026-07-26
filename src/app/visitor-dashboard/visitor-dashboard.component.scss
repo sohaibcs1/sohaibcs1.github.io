@@ -1,0 +1,29 @@
+.visitor-dashboard { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 44px 0 70px; color: #263246; }
+.back-link { color: var(--color-primary); text-decoration: none; font-weight: 500; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin: 30px 0 22px; }
+.dashboard-header span { color: #778399; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+.dashboard-header h1 { margin: 3px 0; color: var(--color-primary); font-size: 42px; font-weight: 520; }
+.dashboard-header p { margin: 0; color: #697487; }
+.dashboard-header label { color: #718096; font-size: 12px; }
+.dashboard-header select { display: block; min-width: 145px; margin-top: 5px; padding: 10px 12px; border: 1px solid #d7e3f1; border-radius: 9px; background: white; }
+.dashboard-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin-bottom: 16px; }
+.dashboard-summary div, .map-card, .activity-card { border: 1px solid #dce8f6; border-radius: 16px; background: #fff; box-shadow: 0 12px 32px rgba(30,80,140,.08); }
+.dashboard-summary div { padding: 17px 20px; }
+.dashboard-summary span { display: block; color: #7b8798; font-size: 12px; }
+.dashboard-summary strong { font-size: 27px; font-weight: 520; }
+.map-card { padding: 12px; }
+.activity-card { margin-top: 16px; overflow: hidden; }
+.activity-heading { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #edf2f8; }
+.activity-heading span { color: #7b8798; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.activity-heading h2 { margin: 2px 0 0; font-size: 22px; }
+.activity-heading button { border: 0; border-radius: 999px; padding: 8px 12px; color: var(--color-primary); background: #edf5ff; cursor: pointer; }
+.visit-row { display: grid; grid-template-columns: 40px minmax(0,1fr) auto auto; align-items: center; gap: 12px; padding: 13px 20px; border-bottom: 1px solid #edf2f8; }
+.visit-row .flag { font-size: 25px; }
+.visit-row div strong, .visit-row div span { display: block; }
+.visit-row div span, .visit-row > span, .visit-row time { color: #758196; font-size: 12px; }
+.loading { padding: 35px; text-align: center; color: #758196; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 16px; padding: 18px; }
+.pagination button { padding: 8px 14px; border: 1px solid #d7e3f1; border-radius: 8px; background: white; cursor: pointer; }
+.pagination button:disabled { opacity: .45; cursor: default; }
+.privacy-note { color: #8792a3; font-size: 11px; text-align: center; }
+@media(max-width:650px){.dashboard-header{display:block}.dashboard-header label{display:block;margin-top:18px}.dashboard-summary{gap:7px}.dashboard-summary div{padding:13px 10px}.visit-row{grid-template-columns:34px minmax(0,1fr) auto}.visit-row>span:not(.flag){display:none}.visitor-dashboard{padding-top:25px}.dashboard-header h1{font-size:34px}}
